@@ -1,0 +1,43 @@
+{
+  "name": "tf-zeppelin",
+  "version": "1.0.0",
+  "components" :
+  [
+    {
+      "name": "tf-zeppelin",
+      "number_of_containers": 1,
+      "artifact": {
+        "id": "ceesingh/tf-zeppelin:latest",
+        "type": "DOCKER"
+      },
+      "launch_command": "/zeppelin/bin/zeppelin.sh",
+      "restart_policy": "NEVER",
+      "resource": {
+        "cpus": 1,
+        "memory": "4096"
+      },
+      "configuration": {
+        "env" : {
+          "YARN_CONTAINER_RUNTIME_DOCKER_MOUNTS" : "/etc/passwd:/etc/passwd:ro,/etc/group:/etc/group:ro,core-site.xml:/hadoop/etc/hadoop/core-site.xml:ro,yarn-site.xml:/hadoop/etc/hadoop/yarn-site.xml:ro,hdfs-site.xml:/hadoop/etc/hadoop/hdfs-site.xml:ro"
+        },
+        "files": [
+          {
+            "dest_file": "core-site.xml",
+            "type": "STATIC",
+            "src_file": "hdfs:///user/csingh/core-site.xml"
+          },
+          {
+            "dest_file": "yarn-site.xml",
+            "type": "STATIC",
+            "src_file": "hdfs:///user/csingh/yarn-site.xml"
+          },
+          {
+            "dest_file": "hdfs-site.xml",
+            "type": "STATIC",
+            "src_file": "hdfs:///user/csingh/hdfs-site.xml"
+          }
+        ]
+      }
+    }
+  ]
+}
