@@ -48,6 +48,7 @@ RUN echo "$LOG_TAG Install python related packages" && \
     apt-get install -y libpng-dev libfreetype6-dev libxft-dev && \
     # for tkinter
     apt-get install -y python-tk libxml2-dev libxslt-dev zlib1g-dev && \
+    pip install --upgrade pip && \
     pip --no-cache-dir install Pillow && \
     pip --no-cache-dir install h5py && \
     pip --no-cache-dir install numpy && \
@@ -125,6 +126,14 @@ RUN chmod 755 /usr/local/bin/run_container.sh
 # More hadoop related environments required for zeppelin shell
 ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop \
     HADOOP_YARN_HOME=$HADOOP_HOME/share/hadoop/yarn
+
+# Install more python packages
+RUN pip --no-cache-dir install keras && \
+    pip --no-cache-dir install opencv-python && \
+    pip --no-cache-dir install scikit-image
+
+# Create /home for pip install
+RUN mkdir -p /home && chmod 777 -R /home
 
 EXPOSE 8080
 CMD ["/usr/local/bin/run_container.sh"]
