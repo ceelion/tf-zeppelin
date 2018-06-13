@@ -13,7 +13,12 @@
       "launch_command": "/zeppelin/bin/zeppelin.sh",
       "resource": {
         "cpus": 1,
-        "memory": "4096"
+        "memory": "4096",
+        "additional" : {
+           "yarn.io/gpu" : {
+              "value" : 2
+           }
+        }
       },
       "configuration": {
         "env" : {
