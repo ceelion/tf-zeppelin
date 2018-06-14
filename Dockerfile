@@ -54,6 +54,7 @@ RUN echo "$LOG_TAG Install python related packages" && \
     pip --no-cache-dir install numpy && \
     pip --no-cache-dir install matplotlib && \
     pip --no-cache-dir install pandas && \
+    pip --no-cache-dir install hdfs && \
     pip --no-cache-dir install ipykernel && \
     pip --no-cache-dir install scipy && \
     pip --no-cache-dir install sklearn && \
