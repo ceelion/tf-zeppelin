@@ -130,10 +130,11 @@ ENV HADOOP_CONF_DIR=${HADOOP_HOME}/etc/hadoop \
 # Install more python packages
 RUN pip --no-cache-dir install keras && \
     pip --no-cache-dir install opencv-python && \
-    pip --no-cache-dir install scikit-image
+    pip --no-cache-dir install scikit-image && \
+    pip --no-cache-dir install hdfs
 
 # Create /home for pip install
 RUN mkdir -p /home && chmod 777 -R /home
-
+ENV HOME=/home
 EXPOSE 8080
 CMD ["/usr/local/bin/run_container.sh"]
