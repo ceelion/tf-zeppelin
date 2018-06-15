@@ -43,5 +43,8 @@
         ]
       }
     }
-  ]
+  ],
+  "quicklinks": {
+    "Apache Zeppelin UI": "http://tf-zeppelin-0.${SERVICE_NAME}.${USER}.${DOMAIN}:8080"
+  }
 }
